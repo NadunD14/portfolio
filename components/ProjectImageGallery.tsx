@@ -29,8 +29,8 @@ export default function ProjectImageGallery({ images, projectTitle }: ProjectIma
                             key={index}
                             onClick={() => setSelectedImage(index)}
                             className={`flex-shrink-0 w-20 h-12 rounded-lg overflow-hidden border-2 transition-all duration-200 ${selectedImage === index
-                                    ? 'border-purple-500'
-                                    : 'border-gray-700 hover:border-gray-600'
+                                ? 'border-purple-500'
+                                : 'border-gray-700 hover:border-gray-600'
                                 }`}
                         >
                             <Image

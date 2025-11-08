@@ -71,8 +71,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     <div className="mb-8">
                         <div className="flex items-center space-x-4 mb-4">
                             <span className={`px-3 py-1 rounded-full text-sm font-medium ${project.status === 'Live'
-                                    ? 'bg-green-900/30 text-green-400 border border-green-800'
-                                    : 'bg-yellow-900/30 text-yellow-400 border border-yellow-800'
+                                ? 'bg-green-900/30 text-green-400 border border-green-800'
+                                : 'bg-yellow-900/30 text-yellow-400 border border-yellow-800'
                                 }`}>
                                 {project.status}
                             </span>
