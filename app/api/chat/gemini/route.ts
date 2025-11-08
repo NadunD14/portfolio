@@ -139,10 +139,26 @@ Example responses for off-topic questions:
 - "That's an interesting question, but I'm specifically designed to discuss Nadun's professional experience and technical expertise. Would you like to know more about his work with AI/ML, cloud technologies, or any of his featured projects like PathMentor or Readle?"`;
 
 export async function POST(request: NextRequest) {
+    const timestamp = new Date().toISOString();
+    const clientIP = request.headers.get('x-forwarded-for') ||
+        request.headers.get('x-real-ip') ||
+        'unknown';
+
     try {
         const { message, history } = await request.json();
 
+        // Log incoming query
+        console.log('=== CHAT QUERY LOG ===');
+        console.log(`Timestamp: ${timestamp}`);
+        console.log(`Client IP: ${clientIP}`);
+        console.log(`User Agent: ${request.headers.get('user-agent') || 'unknown'}`);
+        console.log(`Message Length: ${message.length} characters`);
+        console.log(`History Length: ${history.length} messages`);
+        console.log(`User Query: "${message}"`);
+        console.log('====================');
+
         if (!process.env.GEMINI_API_KEY) {
+            console.error(`[${timestamp}] API key not configured for IP: ${clientIP}`);
             return NextResponse.json(
                 { error: 'Gemini API key not configured' },
                 { status: 500 }
@@ -150,7 +166,7 @@ export async function POST(request: NextRequest) {
         }
 
         const model = genAI.getGenerativeModel({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-1.5-pro',
         });
 
         // Convert chat history to Gemini format and include system instruction
@@ -168,13 +184,32 @@ export async function POST(request: NextRequest) {
             history: chatHistory,
         });
 
+        const startTime = Date.now();
         const result = await chat.sendMessage(messageToSend);
         const response = await result.response;
         const text = response.text();
+        const responseTime = Date.now() - startTime;
+
+        // Log response details
+        console.log('=== CHAT RESPONSE LOG ===');
+        console.log(`Timestamp: ${new Date().toISOString()}`);
+        console.log(`Client IP: ${clientIP}`);
+        console.log(`Response Time: ${responseTime}ms`);
+        console.log(`Response Length: ${text.length} characters`);
+        console.log(`AI Response: "${text.substring(0, 200)}${text.length > 200 ? '...' : ''}"`);
+        console.log('========================');
 
         return NextResponse.json({ message: text });
     } catch (error) {
-        console.error('Error in Gemini API route:', error);
+        // Enhanced error logging
+        console.error('=== CHAT ERROR LOG ===');
+        console.error(`Timestamp: ${timestamp}`);
+        console.error(`Client IP: ${clientIP}`);
+        console.error(`Error Type: ${error instanceof Error ? error.constructor.name : 'Unknown'}`);
+        console.error(`Error Message: ${error instanceof Error ? error.message : String(error)}`);
+        console.error(`Full Error:`, error);
+        console.error('=====================');
+
         return NextResponse.json(
             { error: 'Failed to process your request' },
             { status: 500 }
