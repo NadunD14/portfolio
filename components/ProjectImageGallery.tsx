@@ -13,12 +13,12 @@ export default function ProjectImageGallery({ images, projectTitle }: ProjectIma
 
     return (
         <div className="relative">
-            <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900 border border-gray-800">
+            <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 flex items-center justify-center">
                 <Image
                     src={images[selectedImage]}
                     alt={`${projectTitle} Screenshot ${selectedImage + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                 />
             </div>
             {/* Thumbnail Navigation */}
@@ -38,7 +38,7 @@ export default function ProjectImageGallery({ images, projectTitle }: ProjectIma
                                 alt={`Thumbnail ${index + 1}`}
                                 width={80}
                                 height={48}
-                                className="object-cover w-full h-full"
+                                className="object-contain w-full h-full bg-gray-800"
                             />
                         </button>
                     ))}

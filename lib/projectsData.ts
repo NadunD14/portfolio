@@ -15,7 +15,7 @@ Key features include:
 • Adaptive content difficulty based on performance`,
         techStack: ['Next.js', 'Supabase', 'Python', 'TensorFlow', 'Scikit-learn', 'TypeScript', 'Tailwind CSS'],
         liveUrl: 'https://path-mentor-seven.vercel.app/',
-        githubUrl: '#',
+        githubUrl: 'https://github.com/NadunD14/PathMentor.git',
         images: [
             '/images/projects/pathmentor/Screenshot 2025-11-08 124656.png',
             '/images/projects/pathmentor/Screenshot 2025-11-08 125114.png',
@@ -42,7 +42,7 @@ Key features include:
 • Multi-sensory learning approaches`,
         techStack: ['React', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript', 'CSS3', 'Responsive Design'],
         liveUrl: 'https://readle-sigma.vercel.app/',
-        githubUrl: '#',
+        githubUrl: 'https://github.com/NadunD14/Readle_Chatbot.git',
         images: [
             '/images/projects/readle/Screenshot 2025-11-08 085319.png',
             '/images/projects/readle/Screenshot 2025-11-08 085329.png',
@@ -69,7 +69,7 @@ Key features include:
 • Scalable backend infrastructure`,
         techStack: ['React', 'Node.js', 'Express.js', 'Railway', 'Vercel', 'MCP Server', 'JavaScript', 'REST API'],
         liveUrl: 'https://busy-cv-mcp.vercel.app/',
-        githubUrl: '#',
+        githubUrl: 'https://github.com/NadunD14/CV_ChatBot_With_Email.git',
         images: [
             '/images/projects/cv-chatbot/Screenshot 2025-11-08 124724.png'
         ],
@@ -95,7 +95,7 @@ Key features include:
 • Advanced search and filtering`,
         techStack: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'Custom MVC Framework', 'Responsive Design'],
         liveUrl: null,
-        githubUrl: '#',
+        githubUrl: 'https://github.com/kavindadimuthu/Brandboost.git',
         images: [
             '/images/projects/brandboost/1746206830084.jpeg',
             '/images/projects/brandboost/1746206879538.jpeg',
